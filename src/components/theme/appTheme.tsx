@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     resultado: {
         color: 'white',
         fontSize: 60,
-        textAlign: 'right'
+        textAlign: 'right',
+        marginBottom: 10
     },
     resultadoPequenio: {
         color: 'rgba(255,255,255,0.5)',

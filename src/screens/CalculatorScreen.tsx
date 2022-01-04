@@ -2,50 +2,73 @@ import React from 'react'
 import { Text, View } from 'react-native';
 import ButtonCalculator from '../components/ButtonCalculator';
 import styles from '../components/theme/appTheme';
+import useCalculator from '../hooks/useCalculator';
 
 const CalculatorScreen = () => {
+
+    const {
+        numeroAnterior,
+        numero,
+        limpiar,
+        armarNumero,
+        positivoNegativo,
+        btnDelete,
+        btnDividir,
+        btnMultiplicar,
+        btnSumar,
+        btnRestar,
+        calcular
+    } = useCalculator();
+
     return (
         <View style={styles.calculadoraContainer}>
-            <Text style={styles.resultadoPequenio}>1,500.00</Text>
-            <Text style={styles.resultado}>1,500.00</Text>
+            {
+                (numeroAnterior !== '0') && (
+                    <Text style={styles.resultadoPequenio}>{numeroAnterior}</Text>
+                )
+            }
 
-            {/* Fila de botones */}
+            <Text
+                style={styles.resultado}
+                numberOfLines={1}
+                adjustsFontSizeToFit
+            >
+                {numero}
+            </Text>
+
+            {/* Fila de botones 5 */}
             <View style={styles.fila}>
-                <ButtonCalculator texto='C' color='#9B9B9B'/>
-                <ButtonCalculator texto='+/-' color='#9B9B9B'/>
-                <ButtonCalculator texto='del' color='#9B9B9B'/>
-                <ButtonCalculator texto='/' color='#FF9427'/>
+                <ButtonCalculator texto='C' color='#9B9B9B' onPress={limpiar} />
+                <ButtonCalculator texto='+/-' color='#9B9B9B' onPress={positivoNegativo} />
+                <ButtonCalculator texto='del' color='#9B9B9B' onPress={btnDelete} />
+                <ButtonCalculator texto='/' color='#FF9427' onPress={btnDividir} />
             </View>
 
-            {/* Fila de botones */}
             <View style={styles.fila}>
-                <ButtonCalculator texto='7' />
-                <ButtonCalculator texto='8' />
-                <ButtonCalculator texto='9' />
-                <ButtonCalculator texto='X' color='#FF9427'/>
+                <ButtonCalculator texto='7' onPress={armarNumero} />
+                <ButtonCalculator texto='8' onPress={armarNumero} />
+                <ButtonCalculator texto='9' onPress={armarNumero} />
+                <ButtonCalculator texto='X' color='#FF9427' onPress={btnMultiplicar} />
             </View>
 
-            {/* Fila de botones */}
             <View style={styles.fila}>
-                <ButtonCalculator texto='4' />
-                <ButtonCalculator texto='5' />
-                <ButtonCalculator texto='6' />
-                <ButtonCalculator texto='-' color='#FF9427'/>
+                <ButtonCalculator texto='4' onPress={armarNumero} />
+                <ButtonCalculator texto='5' onPress={armarNumero} />
+                <ButtonCalculator texto='6' onPress={armarNumero} />
+                <ButtonCalculator texto='-' color='#FF9427' onPress={btnRestar} />
             </View>
 
-            {/* Fila de botones */}
             <View style={styles.fila}>
-                <ButtonCalculator texto='1' />
-                <ButtonCalculator texto='2' />
-                <ButtonCalculator texto='3' />
-                <ButtonCalculator texto='+' color='#FF9427'/>
+                <ButtonCalculator texto='1' onPress={armarNumero} />
+                <ButtonCalculator texto='2' onPress={armarNumero} />
+                <ButtonCalculator texto='3' onPress={armarNumero} />
+                <ButtonCalculator texto='+' color='#FF9427' onPress={btnSumar} />
             </View>
 
-            {/* Fila de botones */}
             <View style={styles.fila}>
-                <ButtonCalculator texto='0' isWide />
-                <ButtonCalculator texto='.' />
-                <ButtonCalculator texto='=' color='#FF9427'/>
+                <ButtonCalculator texto='0' isWide onPress={armarNumero} />
+                <ButtonCalculator texto='.' onPress={armarNumero} />
+                <ButtonCalculator texto='=' color='#FF9427' onPress={calcular} />
             </View>
         </View>
     )

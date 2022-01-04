@@ -6,11 +6,12 @@ interface Props {
     texto: string;
     color?: string;
     isWide?: boolean;
+    onPress: (numeroTexto: string) => void;
 }
 
-const ButtonCalculator = ({ texto, color = '#2D2D2D', isWide = false }: Props) => {
+const ButtonCalculator = ({ texto, color = '#2D2D2D', isWide = false, onPress }: Props) => {
     return (
-        <TouchableOpacity activeOpacity={0.55}>
+        <TouchableOpacity activeOpacity={0.55} onPress={()=> onPress(texto)}>
             <View
                 style={{
                     ...styles.boton,
