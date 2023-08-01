@@ -1,18 +1,18 @@
 import React from 'react'
 import { SafeAreaView, StatusBar } from 'react-native';
-import styles from './src/components/theme/appTheme';
-import CalculatorScreen from './src/screens/CalculatorScreen';
+import Calculator from './screens/Calculator';
+import { styles } from './styles/appStyles';
 
-export const App = () => {
+const App: React.FC = () => {
   return (
     <SafeAreaView style={styles.fondo}>
       <StatusBar
         backgroundColor='black'
         barStyle='light-content'
       />
-      <CalculatorScreen />
+      <Calculator />
     </SafeAreaView>
   )
-}
+};
 
 export default App;
